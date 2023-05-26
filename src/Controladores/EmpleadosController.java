@@ -58,7 +58,7 @@ public class EmpleadosController implements ActionListener, MouseListener{
                        
                     while(rstEmpleados.next())
                     {
-                     TablaModelo.addRow(new Object[]{rstEmpleados.getInt("idEmpleados"),rstEmpleados.getString("Apellidos"),rstEmpleados.getString("Nombre"),rstEmpleados.getString("Telefono")});  
+                     TablaModelo.addRow(new Object[]{rstEmpleados.getInt("idEmpleado"),rstEmpleados.getString("Apellidos"),rstEmpleados.getString("Nombre"),rstEmpleados.getString("Telefono")});  
                     }  
                     }
                     catch(SQLException e)

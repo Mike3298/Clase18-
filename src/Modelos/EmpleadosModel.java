@@ -17,7 +17,7 @@ public ResultSet ListarDatos()
         Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        result = sentencia.executeQuery("select * from EMPLEADOS");  
+        result = sentencia.executeQuery("select * from empleados300");  
        return result;
     }
     
@@ -36,7 +36,7 @@ public void Actualizar(int codigo, String Apellidos, String Nombre, String telef
           Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Update Empleados set apellidos ="+"'"+Apellidos+"',nombre="+"'"+Nombre+"',telefono="+"'"+telefono+"' where idempleado="+"'"+codigo+"'");
+        sentencia.executeQuery("Update empleados300 set apellidos ="+"'"+Apellidos+"',nombre="+"'"+Nombre+"',telefono="+"'"+telefono+"' where idempleado="+"'"+codigo+"'");
         }
         catch(SQLException ex)
         {
@@ -50,12 +50,26 @@ public void Guardar(int Codigo, String Apellidos,String Nombre,String Telefono){
         Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Update Empleados set Apellidos ="+"'"+Apellidos+"',Nombre="+"'"+Nombre+"',Telefono="+
-                "'"+Telefono+"'where Codigo="+"'"+Codigo+"'");
+        sentencia.executeQuery("Update empleados300 set apellidos ="+"'"+Apellidos+"',nombre="+"'"+Nombre+"',telefono="+
+                "'"+Telefono+"'where idempleados="+"'"+Codigo+"'");
         }
         catch(SQLException ex)
         {
           JOptionPane.showMessageDialog(null, "No se pudo Actualizar..."+ex.getMessage());
         }
+}
+public void Eliminar (int Codigo,String Apellidos,String Nombre,String Telefono ) {
+         try 
+        {
+        Conexion nuevaConexion = new Conexion();
+        MyConexion = nuevaConexion.Conectar();
+        Statement sentencia = MyConexion.createStatement();
+        sentencia.executeQuery("delete from empleados300 where codigo="+"'"+Codigo+"'");
+        }
+        catch(SQLException ex)
+        {
+          JOptionPane.showMessageDialog(null, "No se pudo Eliminar..."+ex.getMessage());
+        }
+    
 }
 }
