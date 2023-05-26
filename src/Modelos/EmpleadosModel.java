@@ -44,17 +44,18 @@ public void Actualizar(int codigo, String Apellidos, String Nombre, String telef
         }
           
 }
-public void Guardar(int codigo, String Apellidos,String Nombre,String Telefono)
-         try
+public void Guardar(int Codigo, String Apellidos,String Nombre,String Telefono){
+         try 
         {
-          Conexion nuevaConexion = new Conexion();
+        Conexion nuevaConexion = new Conexion();
         MyConexion = nuevaConexion.Conectar();
         Statement sentencia = MyConexion.createStatement();
-        sentencia.executeQuery("Insert into Empleados Values ("+"'"+Codigo+"',"+"'"+Apellidos"',"+Nombre"'+","+Telefono"')");
+        sentencia.executeQuery("Update Empleados set Apellidos ="+"'"+Apellidos+"',Nombre="+"'"+Nombre+"',Telefono="+
+                "'"+Telefono+"'where Codigo="+"'"+Codigo+"'");
         }
         catch(SQLException ex)
         {
           JOptionPane.showMessageDialog(null, "No se pudo Actualizar..."+ex.getMessage());
         }
-
+}
 }
