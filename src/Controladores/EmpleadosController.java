@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static oracle.sql.NUMBER.e;
 
 /**
  *
@@ -99,6 +100,36 @@ public class EmpleadosController implements ActionListener, MouseListener{
         
         this.VistaEmpleados.txtTelefono.setText(this.VistaEmpleados.jtbEmpleados.getValueAt(fila,3).toString());
     }
+        if(e.getSource() == this.VistaEmpleados.btn_Editar)
+        {
+            this.ModeloEmpleado.Actualizar(Integer.parseInt(this.VistaEmpleados.txtCodigo.getText()),
+                    this.VistaEmpleados.txtApellidos.getText(),
+                    this.VistaEmpleados.txtNombre.getText(), this.VistaEmpleados.txtTelefono.getText());
+
+            DefaultTableModel TablaModelo = (DefaultTableModel) this.ModeloEmpleado.ListarDatos();
+            this.VistaEmpleados.jtbEmpleados.setModel(TablaModelo);
+        }
+        if (e.getSource() == this.VistaEmpleados.btn_Agregar) {
+            this.ModeloEmpleado.Guardar(Integer.parseInt(this.VistaEmpleados.txtCodigo.getText()),
+                    this.VistaEmpleados.txtApellidos.getText(),
+                    this.VistaEmpleados.txtNombre.getText(), this.VistaEmpleados.txtTelefono.getText());
+
+            DefaultTableModel TablaModelo = (DefaultTableModel) this.ModeloEmpleado.ListarDatos();
+            this.VistaEmpleados.jtbEmpleados.setModel(TablaModelo);
+        }
+        if (e.getSource() == this.VistaEmpleados.btnEliminar) {
+            this.ModeloEmpleado.Eliminar(Integer.parseInt(this.VistaEmpleados.txtCodigo.getText()),
+                    this.VistaEmpleados.txtApellidos.getText(),
+                    this.VistaEmpleados.txtNombre.getText(), this.VistaEmpleados.txtTelefono.getText());
+            DefaultTableModel TablaModelo = (DefaultTableModel) this.ModeloEmpleado.ListarDatos();
+            this.VistaEmpleados.jtbEmpleados.setModel(TablaModelo);
+
+            this.VistaEmpleados.txtCodigo.setText("");
+            this.VistaEmpleados.txtApellidos.setText("");
+            this.VistaEmpleados.txtNombre.setText("");
+            this.VistaEmpleados.txtTelefono.setText("");
+        }
+
         
         
         

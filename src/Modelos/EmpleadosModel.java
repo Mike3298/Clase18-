@@ -3,8 +3,6 @@ package Modelos;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 public class EmpleadosModel {
 Connection MyConexion;
 ResultSet result;
@@ -70,6 +68,6 @@ public void Eliminar (int Codigo,String Apellidos,String Nombre,String Telefono 
         {
           JOptionPane.showMessageDialog(null, "No se pudo Eliminar..."+ex.getMessage());
         }
-    
 }
+
 }
